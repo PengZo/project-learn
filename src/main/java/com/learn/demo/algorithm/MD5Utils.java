@@ -135,7 +135,7 @@ public class MD5Utils {
     }
  
     public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder(10000);
+        StringBuilder sb = new StringBuilder(100 * 100);  // 100 iterations, ~100 chars per password
         for( int i=0;i<100;i++){
             /**
              * 生成加密密码
