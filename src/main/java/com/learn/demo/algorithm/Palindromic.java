@@ -77,8 +77,8 @@ public class Palindromic {
         int n = s.length();
         String str = "";
         int maxNums = 0;
-        List<Character> list = new ArrayList();
-        List<Character> keyList = new ArrayList();
+        List<Character> list = new ArrayList<>();
+        List<Character> keyList = new ArrayList<>();
         int j = 0;
         if(n == 1){
             return s;
@@ -100,10 +100,11 @@ public class Palindromic {
                             }
                             if(revers1(keyList)){//2             //p
                                 maxNums = keyList.size();
-                                str = "";
+                                StringBuilder sb = new StringBuilder(keyList.size());
                                 for(char c:keyList){
-                                    str = str + c;
+                                    sb.append(c);
                                 }
+                                str = sb.toString();
 
                                 break;
                             }
@@ -149,8 +150,8 @@ public class Palindromic {
         int n = s.length();
         String str = "";
         int maxNums = 0;
-        List<Character> list = new ArrayList();
-        List<Character> keyList = new ArrayList();
+        List<Character> list = new ArrayList<>();
+        List<Character> keyList = new ArrayList<>();
         int j = 0;
         if(n == 1){
             return s;
@@ -172,10 +173,11 @@ public class Palindromic {
                             }
                             if(revers2(keyList)){//2
                                 maxNums = keyList.size();
-                                str = "";
+                                StringBuilder sb = new StringBuilder(keyList.size());
                                 for(char c:keyList){
-                                    str = str + c;
+                                    sb.append(c);
                                 }
+                                str = sb.toString();
 
                                 break;
                             }

@@ -251,7 +251,7 @@ public class SFTP {
      */
     public List<String> listFiles(String directory, SftpConfig sftpConfig) throws SftpException {
         ChannelSftp sftp = connect(sftpConfig);
-        List fileNameList = new ArrayList();
+        List<String> fileNameList = new ArrayList<>();
         try {
             sftp.cd(directory);
         } catch (SftpException e) {
