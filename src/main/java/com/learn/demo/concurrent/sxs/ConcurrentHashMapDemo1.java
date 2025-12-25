@@ -59,13 +59,13 @@ public class ConcurrentHashMapDemo1 {
     }
 
     public void set() {
-        Map<Long, Integer> mm = new HashMap<Long, Integer>();
+        Map<Long, Integer> mm = new HashMap<>(1);
         mm.put(1L, 1);
         widgetCacheMap = mm;
     }
 
     public void change() {
-        Map<Long, Integer> mm = new HashMap<Long, Integer>();
+        Map<Long, Integer> mm = new HashMap<>(1);
         mm.put(1L, 2);
         widgetCacheMap = mm;
     }

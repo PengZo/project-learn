@@ -24,10 +24,13 @@ public class MD5Utils {
      */
     private static String bytesToHexStr(byte[] bytes) {
         String tmp = "";
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder(bytes.length * 2);
         for (int i = 0; i < bytes.length; i++) {
             tmp = Integer.toHexString(bytes[i] & 0xFF);
-            sb.append((tmp.length() == 1) ? "0" + tmp : tmp);
+            if (tmp.length() == 1) {
+                sb.append('0');
+            }
+            sb.append(tmp);
         }
         return sb.toString().toUpperCase().trim();
     }
@@ -79,7 +82,7 @@ public class MD5Utils {
      * @return               按照规则返回的最终密码
      * */
     public static String getFinalPwd(String salt,String md5encodePwd){
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder(salt.length() + md5encodePwd.length());
         /**
          * 前64位规则：
          * 奇数位是用户真实密码的hash值
@@ -88,8 +91,8 @@ public class MD5Utils {
          * */
         // TODO: 2018/12/17 根据实际需求定义规则 
         for(int i=0 ; i<md5encodePwd.length(); i++){
-            stringBuilder.append(md5encodePwd.substring(i,i+1))
-                    .append(salt.substring(i,i+1));
+            stringBuilder.append(md5encodePwd.charAt(i))
+                    .append(salt.charAt(i));
         }
         stringBuilder.append(salt.substring(md5encodePwd.length(),salt.length()));
         return stringBuilder.toString();
@@ -109,9 +112,9 @@ public class MD5Utils {
      * */
     public static String getUserPwdMD5(String finalPwd){
         try {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder(MD5_LENGTH);
             for(int i=0 ; i < MD5_LENGTH * 2 ; i+=2){
-                stringBuilder.append(finalPwd.substring(i,i+1));
+                stringBuilder.append(finalPwd.charAt(i));
             }
             return stringBuilder.toString();
         }catch (Exception e){
@@ -132,7 +135,7 @@ public class MD5Utils {
     }
  
     public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder(10000);
         for( int i=0;i<100;i++){
             /**
              * 生成加密密码

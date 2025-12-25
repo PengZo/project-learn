@@ -20,9 +20,9 @@ public class PolishNotation {
         sc.close();
 
         StringBuilder sb = new StringBuilder();         //结果
-        Stack<Character> opStack = new Stack();         //运算符栈
+        Stack<Character> opStack = new Stack<>();         //运算符栈
 
-        Map<Character, Integer> opMap = new HashMap();   //运算符优先级
+        Map<Character, Integer> opMap = new HashMap<>();   //运算符优先级
         opMap.put('(', 0);
         opMap.put('+', 1);
         opMap.put('-', 1);
@@ -42,7 +42,7 @@ public class PolishNotation {
                 else {                               //栈不为空，且运算符的优先级小于等于栈顶元素
                     for (int j = 0; j <= opStack.size(); j++) {
                         char ch = opStack.pop();    //弹出栈内第一个元素
-                        sb.append(ch + " ");
+                        sb.append(ch).append(' ');
                         if (opStack.isEmpty()) {
                             opStack.push(curOp);
                             break;
@@ -58,16 +58,16 @@ public class PolishNotation {
                     if (c == '(')
                         break;
                     else
-                        sb.append(c + " ");
+                        sb.append(c).append(' ');
                 }
             } else {                                  //如果是数字就直接添加
-                sb.append(input.charAt(i) + " ");
+                sb.append(input.charAt(i)).append(' ');
             }
         }
 
         //把栈内剩余的运算符都弹出站
         for (int i = 0; i <= opStack.size(); i++) {
-            sb.append(opStack.pop() + " ");
+            sb.append(opStack.pop()).append(' ');
         }
         System.out.println(sb);
     }
